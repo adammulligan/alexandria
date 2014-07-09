@@ -19,4 +19,6 @@
 dump.rdb
 
 /coverage
+
 /public/assets
+/public/uploads
