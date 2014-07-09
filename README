@@ -1,0 +1,9 @@
+# Alexandria
+
+A virtual library for my ever growing collection of ebooks.
+
+## Storage
+
+Books are stored in S3, via the `Book` model. Uploads are handled by
+CarrierWave, which can be configured via
+[secrets.yml](config/secrets.yml.example).
