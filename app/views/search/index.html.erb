@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h2>
+    <% if @query %>
+      Showing <%= @books.length %> results for <%= @query %>
+    <% else %>
+      Search
+    <% end %>
+  </h2>
+</div>
+
+<% if @query %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= Book.human_attribute_name(:name) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate(@books,
+        :previous_label => "\u276E", :next_label => "\u276F") %>
+<% end %>

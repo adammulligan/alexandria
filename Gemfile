@@ -23,3 +23,6 @@ end
 
 gem "fog"
 gem 'carrierwave'
+
+gem "twitter-bootstrap-rails"
+gem "will_paginate"
