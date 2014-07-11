@@ -1,0 +1,28 @@
+---
+
+- name: Setup default user and SSH keys
+  hosts: all
+  user: adam
+
+  vars_prompt:
+    - name: user_password
+      prompt: "Enter a password for the new user:"
+      private: true
+
+  roles:
+    - sudo_user
+
+- name: Setup server core
+  hosts: all
+  user: deploy
+
+  pre_tasks:
+    - name: update apt if needed
+      apt: update_cache=yes cache_valid_time=3600
+      sudo: yes
+
+  roles:
+    - nginx
+    - ruby
+    - postgresql-server
+    - app

@@ -1,0 +1,27 @@
+---
+- name: Install Postgresql dependencies
+  apt: pkg={{ item }} state=installed update-cache=yes
+  sudo: yes
+  with_items:
+    - libpq-dev
+
+- name: Install Postgresql server and client
+  apt: pkg={{ item }} state=installed update-cache=yes
+  sudo: yes
+  register: postgresql_install
+  with_items:
+    - postgresql-{{ postgresql.version}}
+    - postgresql-contrib
+    - postgresql-server-dev-{{ postgresql.version }}
+  tags:
+    - packages
+
+- name: Install PostgreSQL config file
+  sudo: yes
+  template: src=postgresql.conf
+            dest=/etc/postgresql/{{ postgresql.version }}/main/postgresql.conf
+            owner={{ postgresql.user }} group={{ postgresql.group }}
+  notify:
+    - restart postgresql
+  tags:
+    - configuration
