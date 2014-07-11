@@ -21,6 +21,16 @@ group :test do
   gem 'capybara', '~> 2.3.0'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
+group :development do
+  gem 'capistrano',  '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-bundler', '~> 1.1', require: false
+end
+
 gem "fog"
 gem 'carrierwave'
 
