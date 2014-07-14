@@ -1,3 +1,5 @@
+require 'yaml'
+
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',
