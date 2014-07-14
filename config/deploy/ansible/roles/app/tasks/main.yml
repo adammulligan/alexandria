@@ -1,7 +1,11 @@
 ---
 
 - name: Install app nginx config
-  template: src=app.nginx.j2 dest=/etc/nginx/sites-available/default
+  template: src=app.nginx.j2 dest=/etc/nginx/sites-available/alexandria
+  sudo: yes
+
+- name: Enable nginx config
+  file: src=/etc/nginx/sites-available/alexandria dest=/etc/nginx/sites-enabled/alexandria state=link
   sudo: yes
   notify:
     - restart nginx
