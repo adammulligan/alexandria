@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: alexandria_production
-  username: alexandria
-  password: <%= ENV['ALEXANDRIA_DATABASE_PASSWORD'] %>
+  username: postgres
